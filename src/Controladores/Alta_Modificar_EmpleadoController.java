@@ -10,8 +10,10 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.value.ObservableValue;
@@ -70,7 +72,14 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         Cargar_Combo_Buscar();
+
+        //Verifica si tiene un id para modificar
+        int id = Empleado.ID_Modificar;
+        if (id != 0) {
+            Cargar_Datos_Empleado(id);
+        }
 
         //Validar numerico
         Txt_Celular.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
@@ -114,8 +123,8 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
 
         if (!Validar_Campos()) {
 
-            if (Guargar()) {
-                Mostrar_Alerta(Alert.AlertType.CONFIRMATION, Pane_Ver_Modificar.getScene().getWindow(),
+            if (Intertar()) {
+                Mostrar_Alerta(Alert.AlertType.INFORMATION, Pane_Ver_Modificar.getScene().getWindow(),
                         "Exito!", "Registro guardado exitosa mente");
                 try {
                     AnchorPane pane = FXMLLoader.load(getClass().getResource("/Vista/Empleados.fxml"));
@@ -134,7 +143,8 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
         }
     }
 
-    public boolean Guargar() {
+    //Insertar nuevo 
+    public boolean Intertar() {
 
         boolean Exito;
 
@@ -177,6 +187,98 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
         }
 
         return Exito;
+
+    }
+
+    //Modificar registro
+    public boolean Actualizar() {
+
+        boolean Exito;
+
+        try {
+
+            PreparedStatement ps;
+
+            String Query = "exec [dbo].[sp_Alta_Empleado] ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?;";
+
+            ps = SQL.Conectar().prepareStatement(Query);
+
+            ps.setString(1, Txt_NSS.getText());
+            ps.setString(2, Txt_Nombre.getText());
+            ps.setString(3, Txt_Apellidos.getText());
+            ps.setString(4, Txt_Direccion.getText());
+            ps.setString(5, Txt_Celular.getText());
+            ps.setString(6, TxtRFC.getText());
+            ps.setString(7, Date_Fecha_Nacimiento.getValue().toString());
+            ps.setString(8, TxtCurp.getText());
+            ps.setString(9, Txt_Correo.getText());
+            ps.setString(10, Date_Fecha_Ingreso.getValue().toString());
+            ps.setString(11, Txt_Puesto.getText());
+            ps.setString(12, Txt_Area.getText());
+            ps.setString(13, Txt_Salario.getText());
+            ps.setString(14, Txt_Contraseña.getText());
+            ps.setString(15, Combo_Tipo_Cuenta.getValue());
+
+            ps.executeUpdate();
+
+            Exito = true;
+
+        } catch (SQLException e) {
+            System.out.println("Error en Guardar Empleados :" + e.getMessage());
+
+            if (e.getMessage().equals("Se ha generado un conjunto de resultados para actualización.")) {
+                Lbl_Alerta.setVisible(true);
+            }
+
+            Exito = false;
+        }
+
+        return Exito;
+
+    }
+
+    public void Cargar_Datos_Empleado(int id) {
+
+        try {
+            DateTimeFormatter Formato = DateTimeFormatter.ofPattern("");
+            LocalDate localDate;
+
+            PreparedStatement ps;
+            ResultSet rs;
+
+            String Query = "SELECT * FROM empleado e JOIN usuario u ON e.ID_Empleado = u.ID_Empleado  WHERE E.ID_Empleado = ?";
+
+            ps = SQL.Conectar().prepareStatement(Query);
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Txt_NSS.setText(rs.getString(2));
+                Txt_Nombre.setText(rs.getString(3));
+                Txt_Apellidos.setText(rs.getString(4));
+                Txt_Direccion.setText(rs.getString(5));
+                Txt_Celular.setText(rs.getString(6));
+                TxtRFC.setText(rs.getString(7));
+                localDate = LocalDate.parse(rs.getString(8), Formato);
+                Date_Fecha_Nacimiento.setValue(localDate);
+                TxtCurp.setText(rs.getString(9));
+                Txt_Correo.setText(rs.getString(10));
+                localDate = LocalDate.parse(rs.getString(11), Formato);
+                Date_Fecha_Ingreso.setValue(localDate);
+                Txt_Puesto.setText(rs.getString(12));
+                Txt_Area.setText(rs.getString(13));
+                Txt_Salario.setText(rs.getString(14));
+                Txt_Contraseña.setText(rs.getString(18));
+                Combo_Tipo_Cuenta.setValue(rs.getString(19));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error en login bueno :" + e.getMessage());
+        }
 
     }
 
