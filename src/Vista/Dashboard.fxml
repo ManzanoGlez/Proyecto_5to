@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="Anchor_Pane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.DashboardController">
+   <children>
+      <AnchorPane fx:id="Pane_Base" prefHeight="604.0" prefWidth="1206.0" />
+      <JFXDrawer fx:id="Panel_Drawer" defaultDrawerSize="250.0" layoutY="54.0" prefHeight="550.0" prefWidth="207.0" />
+      <Pane prefHeight="54.0" prefWidth="1206.0" style="-fx-background-color: #526078;">
+         <children>
+            <JFXHamburger fx:id="Menu_Hamburguesa" layoutX="14.0" layoutY="13.0" styleClass="jfx-hamburger" stylesheets="@../Css/Diseño.css" />
+            <Label fx:id="Lbl_Usuario" layoutX="843.0" layoutY="11.0" prefHeight="32.0" prefWidth="319.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
