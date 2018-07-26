@@ -75,12 +75,6 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
 
         Cargar_Combo_Buscar();
 
-        //Verifica si tiene un id para modificar
-        int id = Empleado.ID_Modificar;
-        if (id != 0) {
-            Cargar_Datos_Empleado(id);
-        }
-
         //Validar numerico
         Txt_Celular.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -105,6 +99,12 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
                 Lbl_Alerta.setVisible(false);
             }
         });
+
+        //Verifica si tiene un id para modificar
+        int id = Empleado.ID_Modificar;
+        if (id != 0) {
+            Cargar_Datos_Empleado(id);
+        }
 
     }
 
@@ -240,13 +240,28 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
     public void Cargar_Datos_Empleado(int id) {
 
         try {
-            DateTimeFormatter Formato = DateTimeFormatter.ofPattern("");
-            LocalDate localDate;
+            DateTimeFormatter Formato = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            LocalDate fecha;
 
             PreparedStatement ps;
             ResultSet rs;
 
-            String Query = "SELECT * FROM empleado e JOIN usuario u ON e.ID_Empleado = u.ID_Empleado  WHERE E.ID_Empleado = ?";
+            String Query = "SELECT "
+                    + "e.NSS,"
+                    + "e.Nombres,"
+                    + "e.Apellidos,"
+                    + "e.Direccion,"
+                    + "e.Telefono,"
+                    + "e.RFC,"
+                    + "convert(varchar, e.Fecha_Nacimiento, 101) as Fecha_Nacimiento,"
+                    + "e.CURP,"
+                    + "e.Correo,"
+                    + "convert(varchar, e.Fecha_Ingreso, 101),"
+                    + "e.Puesto,"
+                    + "e.Area,"
+                    + "e.Sueldo,u.Contraseña,u.Tipo "
+                    + "FROM empleado e JOIN usuario u ON e.ID_Empleado = u.ID_Empleado "
+                    + "WHERE e.ID_Empleado = ?";
 
             ps = SQL.Conectar().prepareStatement(Query);
 
@@ -256,28 +271,28 @@ public class Alta_Modificar_EmpleadoController implements Initializable {
 
             while (rs.next()) {
 
-                Txt_NSS.setText(rs.getString(2));
-                Txt_Nombre.setText(rs.getString(3));
-                Txt_Apellidos.setText(rs.getString(4));
-                Txt_Direccion.setText(rs.getString(5));
-                Txt_Celular.setText(rs.getString(6));
-                TxtRFC.setText(rs.getString(7));
-                localDate = LocalDate.parse(rs.getString(8), Formato);
-                Date_Fecha_Nacimiento.setValue(localDate);
-                TxtCurp.setText(rs.getString(9));
-                Txt_Correo.setText(rs.getString(10));
-                localDate = LocalDate.parse(rs.getString(11), Formato);
-                Date_Fecha_Ingreso.setValue(localDate);
-                Txt_Puesto.setText(rs.getString(12));
-                Txt_Area.setText(rs.getString(13));
-                Txt_Salario.setText(rs.getString(14));
-                Txt_Contraseña.setText(rs.getString(18));
-                Combo_Tipo_Cuenta.setValue(rs.getString(19));
-
+                Txt_NSS.setText(rs.getString(1));
+                Txt_Nombre.setText(rs.getString(2));
+                Txt_Apellidos.setText(rs.getString(3));
+                Txt_Direccion.setText(rs.getString(4));
+                Txt_Celular.setText(rs.getString(5));
+                TxtRFC.setText(rs.getString(6));
+                fecha = LocalDate.parse(rs.getString(7), Formato);
+                Date_Fecha_Nacimiento.setValue(fecha);
+                TxtCurp.setText(rs.getString(8));
+                Txt_Correo.setText(rs.getString(9));
+                fecha = LocalDate.parse(rs.getString(10), Formato);
+                Date_Fecha_Ingreso.setValue(fecha);
+                Txt_Puesto.setText(rs.getString(11));
+                Txt_Area.setText(rs.getString(12));
+                Txt_Salario.setText(rs.getString(13));
+                Txt_Contraseña.setText(rs.getString(14));
+                Combo_Tipo_Cuenta.setValue(rs.getString(15));
             }
 
         } catch (SQLException e) {
-            System.out.println("Error en login bueno :" + e.getMessage());
+
+            System.out.println("Error en Cargar Datos empleado :" + e.getMessage());
         }
 
     }
