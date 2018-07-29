@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="Pane_Proyectos" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ProyectosController">
+     <children>
+      <Label fx:id="lbl_Titulo" layoutX="99.0" layoutY="59.0" prefHeight="88.0" prefWidth="327.0" text="Proyectos">
+         <font>
+            <Font name="System Bold" size="50.0" />
+         </font>
+      </Label>
+      <TableView fx:id="Tabla" layoutX="107.0" layoutY="209.0" prefHeight="365.0" prefWidth="1025.0" styleClass=".table-view .table-cell" stylesheets="@../Css/Diseño.css">
+        <columns>
+            <TableColumn fx:id="Col_0" editable="false" prefWidth="41.0" text="ID" />
+            <TableColumn fx:id="Col_1" editable="false" prefWidth="100.0" text="Codigo" />
+          <TableColumn fx:id="Col_2" prefWidth="158.0" text="Proyecto" />
+          <TableColumn fx:id="Col_3" prefWidth="163.0" text="Cliente" />
+            <TableColumn fx:id="Col_4" prefWidth="156.0" text="Vendedor" />
+            <TableColumn fx:id="Col_5" prefWidth="113.0" text="Fecha inicio" />
+            <TableColumn fx:id="Col_6" prefWidth="118.0" text="Estatus" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="Btn_Agregar" layoutX="115.0" layoutY="154.0" onAction="#Nuevo" prefHeight="34.0" prefWidth="73.0" style="-fx-background-color: #118ec6;" text="Nuevo" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></JFXButton>
+      <JFXTextField fx:id="Txt_Buscar" layoutX="746.0" layoutY="152.0" prefHeight="38.0" prefWidth="223.0">
+         <font>
+            <Font size="17.0" />
+         </font></JFXTextField>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="710.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/lupa.png" />
+         </image>
+      </ImageView>
+      <JFXComboBox fx:id="Combo_Buscar" labelFloat="true" layoutX="969.0" layoutY="152.0" prefHeight="38.0" prefWidth="144.0" />
+
+     
+   </children>
+   
+   
+   
+</AnchorPane>

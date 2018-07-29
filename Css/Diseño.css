@@ -1,0 +1,30 @@
+.root {
+    -fx-effect: dropshadow( gaussian, rgba(0, 255, 255, 0.4), 10, 0.5, 0.0, 0.0 );
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+}
+
+#main {
+    -fx-background-color: transparent;
+}
+
+#round-red {
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+
+.jfx-hamburger StackPane{
+ -fx-pref-width: 40px;
+ -fx-pref-height: 5px;
+ -fx-background-color : #ffffff;
+ -fx-background-radius : 5px;
+}
+
+.table-view .table-cell{
+   -fx-font-weight:bold;
+   -fx-font-size:12px;    
+  
+   /* -fx-text-fill:orange; */
+}

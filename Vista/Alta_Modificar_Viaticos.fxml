@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="Pane_Supervision" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.Alta_Modificar_ViaticosController">
+   <children>
+      <Button fx:id="BtnRegresar" layoutX="1086.0" layoutY="551.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #118ec6;" text="Regresar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label fx:id="lblViatico" layoutX="344.0" layoutY="92.0" prefHeight="53.0" prefWidth="496.0" text="SUPERVISIÓN  DE VIATICOS" textFill="#720c0c">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Pane layoutX="14.0" layoutY="152.0" prefHeight="256.0" prefWidth="358.0">
+         <children>
+            <Label layoutX="36.0" layoutY="64.0" text="Solicitud por:" />
+            <Label layoutX="36.0" layoutY="95.0" text="Seleccióna para que proyecto es el viaje:" />
+            <Label layoutX="36.0" layoutY="146.0" text="Fecha de salida:" />
+            <DatePicker fx:id="Date_Fecha_Salida" layoutX="36.0" layoutY="163.0" prefHeight="25.0" prefWidth="122.0" />
+            <DatePicker fx:id="Date_Fecha_Regreso" layoutX="176.0" layoutY="159.0" prefHeight="25.0" prefWidth="134.0" />
+            <Label layoutX="179.0" layoutY="142.0" text="Fecha de regreso:" />
+            <TextField fx:id="TxtSolicitud_Por" layoutX="110.0" layoutY="60.0" />
+            <TextField fx:id="Txt_Proyecto_Viaje" layoutX="36.0" layoutY="112.0" prefHeight="25.0" prefWidth="225.0" />
+            <TextField fx:id="TxtDestino" layoutX="36.0" layoutY="206.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="TxtDuracion" layoutX="216.0" layoutY="206.0" prefHeight="25.0" prefWidth="122.0" />
+            <Label layoutX="36.0" layoutY="188.0" text="Destino:" />
+            <Label layoutX="218.0" layoutY="188.0" text="Duración:" />
+            <Label layoutX="25.0" layoutY="14.0" text="Datos del Viaje" textFill="#720c0c">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="354.0" layoutY="152.0" prefHeight="417.0" prefWidth="358.0">
+         <children>
+            <Label layoutX="39.0" layoutY="63.0" text="Avión:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <TextField fx:id="TxtAvion_Solicitado" layoutX="105.0" layoutY="58.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtGasolina_Solicitado" layoutX="105.0" layoutY="85.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtAutobus_Solicitado" layoutX="105.0" layoutY="111.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtUber_Solicitado" layoutX="105.0" layoutY="138.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtAlimentos_Solicitado" layoutX="105.0" layoutY="165.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtCaseta_Solicitado" layoutX="105.0" layoutY="192.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtHospedaje_Solicitado" layoutX="105.0" layoutY="219.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtOtros_Solicitado" layoutX="105.0" layoutY="247.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtTotal_Solicitado" layoutX="107.0" layoutY="305.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtTotal_Comprobado" layoutX="220.0" layoutY="306.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtOtros_Comprobado" layoutX="217.0" layoutY="247.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtHospedaje_Comprobado" layoutX="218.0" layoutY="220.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtCasetas_Comprobado" layoutX="218.0" layoutY="193.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtAlimentos_Comprobado" layoutX="218.0" layoutY="166.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtUber_Comprobado" layoutX="218.0" layoutY="139.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtAutobus_Comprobado" layoutX="218.0" layoutY="112.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtGasolina_Comprobado" layoutX="218.0" layoutY="85.0" prefHeight="25.0" prefWidth="90.0" />
+            <TextField fx:id="TxtAvion_Comprobado" layoutX="218.0" layoutY="58.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label layoutX="37.0" layoutY="90.0" text="Gasolina:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="37.0" layoutY="115.0" text="Autobus:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="37.0" layoutY="141.0" text="UBER:" />
+            <Label layoutX="37.0" layoutY="169.0" text="Alimentos:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="36.0" layoutY="195.0" text="Caseta:" />
+            <Label layoutX="37.0" layoutY="224.0" text="Hospedaje:">
+               <font>
+                   <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="36.0" layoutY="251.0" text="Otros:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="40.0" layoutY="312.0" text="Total:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="218.0" layoutY="40.0" text="Viaticos Comprobados:" />
+            <Label layoutX="105.0" layoutY="40.0" text="Viaticos Solicitados" />
+            <Label layoutX="28.0" layoutY="36.0" text="Rubros:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="7.0" text="Solicitud de viaticos:" textFill="#720c0c">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="743.0" layoutY="152.0" text="Facturas capturadas:" textFill="#720c0c">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView layoutX="743.0" layoutY="191.0" prefHeight="200.0" prefWidth="430.0">
+        <columns>
+          <TableColumn prefWidth="35.0" text="ID" />
+          <TableColumn prefWidth="101.0" text="Fecha Emisión" />
+            <TableColumn prefWidth="75.0" text="Rubro" />
+            <TableColumn prefWidth="61.0" text="Subtotal" />
+            <TableColumn prefWidth="50.0" text="I.V.A." />
+            <TableColumn prefWidth="57.0" text="Total" />
+            <TableColumn prefWidth="146.0" />
+        </columns>
+      </TableView>
+      <Button fx:id="BtnGuardar" layoutX="976.0" layoutY="551.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #118ec6;" text="Guardar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Label layoutX="776.0" layoutY="412.0" text="Estatus::" />
+      <ComboBox fx:id="CmbEstatus" layoutX="835.0" layoutY="408.0" prefWidth="150.0" />
+      <TextField fx:id="TxtMotivo" layoutX="785.0" layoutY="459.0" prefHeight="53.0" prefWidth="390.0" />
+      <Label layoutX="777.0" layoutY="442.0" text="Motivo:" />
+      <Button fx:id="BtnModificar" layoutX="748.0" layoutY="551.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #118ec6;" text="Modificar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
